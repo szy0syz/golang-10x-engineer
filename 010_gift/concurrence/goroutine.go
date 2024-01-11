@@ -2,39 +2,21 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 	"time"
 )
 
-func parent() {
-	go child()
-	for i := 'a'; i <= 'e'; i++ {
-		fmt.Printf("parent: %d\n", i)
-		//time.Sleep(500 * time.Millisecond)
-	}
-}
-
-func child() {
-	for i := 'a'; i <= 'e'; i++ {
-		fmt.Printf("child: %c\n", i)
-		time.Sleep(500 * time.Millisecond)
-	}
-}
-
 func main() {
-	go parent()
-	//go child()
-	fmt.Println("main")
-	time.Sleep(5 * time.Second)
-}
+	cpuCount := runtime.NumCPU()
+	fmt.Println("逻辑核心数: ", cpuCount)
+	runtime.GOMAXPROCS(cpuCount / 2)
 
-// 这里可以证明Go里没有父子协程的概念
-//parent: 97
-//parent: 98
-//parent: 99
-//parent: 100
-//parent: 101
-//child: a
-//child: b
-//child: c
-//child: d
-//child: e
+	const P = 1000000
+	for i := 0; i < P; i++ {
+		go time.Sleep(3 * time.Second)
+	}
+
+	fmt.Println("进程中存活的协程数：", runtime.NumGoroutine())
+	//逻辑核心数:  10
+	//进程中存活的协程数： 1000001
+}
