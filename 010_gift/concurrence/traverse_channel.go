@@ -36,7 +36,7 @@ func traveseChannel() {
 	fmt.Println("bye")
 }
 
-func main() {
+func main7() {
 	go add2Ch()
 	go traveseChannel()
 
