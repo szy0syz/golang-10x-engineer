@@ -67,7 +67,7 @@ func consumer(filename string) {
 	all_over <- struct{}{}
 }
 
-func main() {
+func main10() {
 	for i := 0; i < PRODUC_NUM; i++ {
 		pc_sync <- struct{}{}
 	}
