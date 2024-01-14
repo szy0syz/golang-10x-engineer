@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func main() {
+func main3() {
 	cpuCount := runtime.NumCPU()
 	fmt.Println("逻辑核心数: ", cpuCount)
 	runtime.GOMAXPROCS(cpuCount / 2)
