@@ -30,7 +30,7 @@ func traverseChannel1() {
 	fmt.Println("bye")
 }
 
-func main() {
+func main8() {
 	twg.Add(2)
 	go add2Ch1()
 	go traverseChannel1()
