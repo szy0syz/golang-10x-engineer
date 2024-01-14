@@ -69,6 +69,7 @@ func writeFile(outfile string) {
 		}
 	}
 	writer.Flush()
+	// 这里最最后一个解除阻塞的地方
 	writeFinishChan <- struct{}{}
 }
 
@@ -109,4 +110,7 @@ func main9() {
 
 	//第3阶段结束后，往writeFinishChan里send一下
 	<-writeFinishChan
+
+	// 这里有上游、中游和下游
+	// 相互依赖等待，下游最后关闭，上游先关闭
 }
