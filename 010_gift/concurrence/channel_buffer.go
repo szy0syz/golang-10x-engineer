@@ -2,7 +2,7 @@ package main
 
 import "github.com/szy0syz/golang-10x-engineer/gift/database"
 
-func main() {
+func main6() {
 	ch := make(chan database.Gift, 100)
 
 	go func() {
