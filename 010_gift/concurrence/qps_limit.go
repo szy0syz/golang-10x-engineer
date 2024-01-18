@@ -20,7 +20,7 @@ func handler(i int) {
 // 这里演示如何用channel限制接口的并发数量
 // 但实际上就是限制同时执行handler函数的协程数量
 // 简单的利用channel特性完成需求
-func main() {
+func main11() {
 	const P = 1000
 	wg := sync.WaitGroup{}
 	wg.Add(P)
